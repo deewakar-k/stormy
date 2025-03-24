@@ -15,10 +15,16 @@ import (
 )
 
 const (
-	city      = "Hyderabad" //TODO: system location
-	units     = "metric"    //default
-	timeplus  = 0
-	timeminus = 0
+	default_city = "Hyderabad" //TODO: geo location
+	units        = "metric"    //default
+	timeplus     = 0
+	timeminus    = 0
+
+	// ANSI color codes
+	yellow    = "\033[38;5;227m"
+	lightBlue = "\033[38;5;153m"
+	purple    = "\033[38;5;147m"
+	reset     = "\033[0m"
 )
 
 type WeatherResponse struct {
@@ -42,9 +48,13 @@ type WeatherResponse struct {
 
 func main() {
 	err := godotenv.Load()
-
 	if err != nil {
 		log.Fatal("error loading .env")
+	}
+
+	city := default_city
+	if len(os.Args) > 1 {
+		city = os.Args[1]
 	}
 
 	appid := os.Getenv("WEATHERAPI_KEY")
@@ -88,17 +98,18 @@ func main() {
 
 	temp := fmt.Sprintf("%.0f°", math.Round(weather.Main.Temp))
 
+	// better way to do this?
 	sourcesunrise := int64(weather.Sys.Sunrise)
 	sourcesunset := int64(weather.Sys.Sunset)
 
-	sunriseDatetime := time.Unix(sourcesunrise, 0).UTC()
-	sunsetDatetime := time.Unix(sourcesunset, 0).UTC()
+	sunriseDatetime := time.Unix(sourcesunrise, 0).Local()
+	sunsetDatetime := time.Unix(sourcesunset, 0).Local()
 
 	adjustedSunrise := sunriseDatetime.Add(time.Duration(timeplus) * time.Hour).Add(-time.Duration(timeminus) * time.Hour)
 	adjustedSunset := sunsetDatetime.Add(time.Duration(timeplus) * time.Hour).Add(-time.Duration(timeminus) * time.Hour)
 
-	sunrisestring := adjustedSunrise.Format("15:04:05")
-	sunsetstring := adjustedSunset.Format("15:04:05")
+	sunrisestring := adjustedSunrise.Format(time.Kitchen)
+	sunsetstring := adjustedSunset.Format(time.Kitchen)
 
 	var weather_condition string
 	var output []string
@@ -107,16 +118,16 @@ func main() {
 
 	if weather_condition == "clear" {
 		output = []string{
-			"     \\   /     " + "weather: clear",
-			"      .-.      " + "temperature: " + temp,
-			"   ‒ (   ) ‒   " + "wind speed: " + wind_speed,
-			"      `-᾿      " + "sunrise: " + sunrisestring,
-			"     /   \\     " + "sunset: " + sunsetstring,
+			"     " + yellow + "\\   /" + reset + "     " + " clear",
+			"      " + yellow + ".-." + reset + "      " + "temperature: " + temp,
+			"   " + yellow + "‒ (   ) ‒" + reset + "   " + "wind speed: " + wind_speed,
+			"      " + yellow + "`-᾿" + reset + "      " + "sunrise: " + sunrisestring,
+			"     " + yellow + "/   \\" + reset + "     " + "sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "clouds" {
 		output = []string{
 			"                 " + "weather: cloudy",
-			"       .--.      " + "temprature: " + temp,
+			"       .--.      " + "temperature: " + temp,
 			"    .-(    ).    " + "wind speed: " + wind_speed,
 			"   (___.__)__)   " + "sunrise: " + sunrisestring,
 			"                 " + "sunset: " + sunsetstring,
@@ -127,30 +138,30 @@ func main() {
 			"       .--.      " + "temperature: " + temp,
 			"    .-(    ).    " + "wind speed: " + wind_speed,
 			"   (___.__)__)   " + "sunrise: " + sunrisestring,
-			"    ʻ‚ʻ‚ʻ‚ʻ‚ʻ    " + "sunset: " + sunsetstring,
+			"    " + lightBlue + "ʻ‚ʻ‚ʻ‚ʻ‚ʻ" + reset + "    " + "sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "snow" {
 		output = []string{
-			"                 " + "weather: snowy",
-			"       .--.      " + "temperature: " + temp,
-			"    .-(    ).    " + "wind speed: " + wind_speed,
-			"   (___.__)__)   " + "sunrise: " + sunrisestring,
-			"    ʻ‚ʻ‚ʻ‚ʻ‚ʻ    " + "sunset: " + sunsetstring,
+			"       .--.      " + "weather: snowy",
+			"    .-(    ).    " + "temperature: " + temp,
+			"   (___.__)__)   " + "wind speed: " + wind_speed,
+			"     * * * *     " + "sunrise: " + sunrisestring,
+			"    * * * *      " + "sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "thunderstorm" {
 		output = []string{
 			"       .--.      " + "weather: stormy",
 			"    .-(    ).    " + "temperature: " + temp,
 			"   (___.__)__)   " + "wind speed: " + wind_speed,
-			"        /_       " + "sunrise: " + sunrisestring,
-			"         /       " + "sunset: " + sunsetstring,
+			"      " + purple + "  /_" + reset + "       " + "sunrise: " + sunrisestring,
+			"       " + purple + "  /" + reset + "       " + "sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "haze" {
 		output = []string{
-			"      ~ ~ ~ ~    " + "weather: hazy",
-			"     ~ ~ ~ ~ ~   " + "temperature: " + temp,
-			"      ~ ~ ~ ~    " + "wind speed: " + wind_speed,
-			"                 " + "sunrise: " + sunrisestring,
+			"                 " + "weather: hazy",
+			"    ~ ~ ~ ~      " + "temperature: " + temp,
+			"   ~ ~ ~ ~ ~     " + "wind speed: " + wind_speed,
+			"    ~ ~ ~ ~      " + "sunrise: " + sunrisestring,
 			"                 " + "sunset: " + sunsetstring,
 		}
 	} else {
