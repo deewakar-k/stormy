@@ -41,5 +41,3 @@ stormy city_name
 - supports major city names.
 - simple and clean output.
 
----
-
