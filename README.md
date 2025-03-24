@@ -5,8 +5,8 @@ minimal cli app for checking the weather, inspired by [rainy](https://github.com
 ### preview
 ![Screenshot From 2025-03-24 21-10-34](https://github.com/user-attachments/assets/4d6b8a2e-78a6-49d1-a0c8-4dae9af91bbc)
 
+![image](https://github.com/user-attachments/assets/762358a6-46f4-44c3-84cb-c906f1048110)
 
-![Screenshot From 2025-03-24 21-12-56](https://github.com/user-attachments/assets/b4c1b9bf-9f3f-44a0-8a0e-db42ae20c745)
 
 ### installation
 
