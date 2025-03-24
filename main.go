@@ -4,17 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"log"
 	"math"
 	"net/http"
 	"os"
 	"strings"
 	"time"
-
-	"github.com/joho/godotenv"
 )
 
 const (
+	api_key      = "your-api-key"
 	default_city = "Hyderabad" //TODO: geo location
 	units        = "metric"    //default
 	timeplus     = 0
@@ -47,18 +45,12 @@ type WeatherResponse struct {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("error loading .env")
-	}
-
 	city := default_city
 	if len(os.Args) > 1 {
 		city = os.Args[1]
 	}
 
-	appid := os.Getenv("WEATHERAPI_KEY")
-	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&units=%s&APPID=%s", city, units, appid)
+	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&units=%s&APPID=%s", city, units, api_key)
 
 	res, err := http.Get(url)
 	if err != nil {
