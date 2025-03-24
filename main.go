@@ -110,59 +110,59 @@ func main() {
 
 	if weather_condition == "clear" {
 		output = []string{
-			"     " + yellow + "\\   /" + reset + "     " + " clear",
-			"      " + yellow + ".-." + reset + "      " + "temperature: " + temp,
-			"   " + yellow + "‒ (   ) ‒" + reset + "   " + "wind speed: " + wind_speed,
-			"      " + yellow + "`-᾿" + reset + "      " + "sunrise: " + sunrisestring,
-			"     " + yellow + "/   \\" + reset + "     " + "sunset: " + sunsetstring,
+			"                 " + "󰖙  weather: clear",
+			"      " + yellow + ".-." + reset + "      " + "󰔏  temperature: " + temp,
+			"   " + yellow + "‒ (   ) ‒" + reset + "   " + "󰖝  wind speed: " + wind_speed,
+			"      " + yellow + "`-᾿" + reset + "      " + "󰖜  sunrise: " + sunrisestring,
+			"     " + yellow + "/   \\" + reset + "     " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "clouds" {
 		output = []string{
-			"                 " + "weather: cloudy",
-			"       .--.      " + "temperature: " + temp,
-			"    .-(    ).    " + "wind speed: " + wind_speed,
-			"   (___.__)__)   " + "sunrise: " + sunrisestring,
-			"                 " + "sunset: " + sunsetstring,
+			"                 " + "󰖐  weather: cloudy",
+			"       .--.      " + "󰔏  temperature: " + temp,
+			"    .-(    ).    " + "󰖝  wind speed: " + wind_speed,
+			"   (___.__)__)   " + "󰖜  sunrise: " + sunrisestring,
+			"                 " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "rain" {
 		output = []string{
-			"                 " + "weather: rainy",
-			"       .--.      " + "temperature: " + temp,
-			"    .-(    ).    " + "wind speed: " + wind_speed,
-			"   (___.__)__)   " + "sunrise: " + sunrisestring,
-			"    " + lightBlue + "ʻ‚ʻ‚ʻ‚ʻ‚ʻ" + reset + "    " + "sunset: " + sunsetstring,
+			"                 " + "󰖗  weather: rainy",
+			"       .--.      " + "󰔏  temperature: " + temp,
+			"    .-(    ).    " + "󰖝  wind speed: " + wind_speed,
+			"   (___.__)__)   " + "󰖜  sunrise: " + sunrisestring,
+			"    " + lightBlue + "ʻ‚ʻ‚ʻ‚ʻ‚ʻ" + reset + "    " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "snow" {
 		output = []string{
-			"       .--.      " + "weather: snowy",
-			"    .-(    ).    " + "temperature: " + temp,
-			"   (___.__)__)   " + "wind speed: " + wind_speed,
-			"     * * * *     " + "sunrise: " + sunrisestring,
-			"    * * * *      " + "sunset: " + sunsetstring,
+			"                 " + "󰖘  weather: snowy",
+			"    .-(    ).    " + "󰔏  temperature: " + temp,
+			"   (___.__)__)   " + "󰖝  wind speed: " + wind_speed,
+			"     * * * *     " + "󰖜  sunrise: " + sunrisestring,
+			"    * * * *      " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "thunderstorm" {
 		output = []string{
-			"       .--.      " + "weather: stormy",
-			"    .-(    ).    " + "temperature: " + temp,
-			"   (___.__)__)   " + "wind speed: " + wind_speed,
-			"      " + purple + "  /_" + reset + "       " + "sunrise: " + sunrisestring,
-			"       " + purple + "  /" + reset + "       " + "sunset: " + sunsetstring,
+			"                 " + "󰖓  weather: stormy",
+			"    .-(    ).    " + "󰔏  temperature: " + temp,
+			"   (___.__)__)   " + "󰖝  wind speed: " + wind_speed,
+			"      " + purple + "  /_" + reset + "       " + "󰖜  sunrise: " + sunrisestring,
+			"       " + purple + "  /" + reset + "       " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "haze" {
 		output = []string{
-			"                 " + "weather: hazy",
-			"    ~ ~ ~ ~      " + "temperature: " + temp,
-			"   ~ ~ ~ ~ ~     " + "wind speed: " + wind_speed,
-			"    ~ ~ ~ ~      " + "sunrise: " + sunrisestring,
-			"                 " + "sunset: " + sunsetstring,
+			"                 " + "󰖑  weather: hazy",
+			"    ~ ~ ~ ~      " + "󰔏  temperature: " + temp,
+			"   ~ ~ ~ ~ ~     " + "󰖝  wind speed: " + wind_speed,
+			"    ~ ~ ~ ~      " + "󰖜  sunrise: " + sunrisestring,
+			"                 " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else {
 		output = []string{
-			"       .--.      " + "weather: " + weather_condition,
-			"    .-(    ).    " + "temperature: " + temp,
-			"   (___.__)__)   " + "wind speed: " + wind_speed,
-			"                 " + "sunrise: " + sunrisestring,
-			"                 " + "sunset: " + sunsetstring,
+			"                 " + "󰖐  weather: " + weather_condition,
+			"    .-(    ).    " + "󰔏  temperature: " + temp,
+			"   (___.__)__)   " + "󰖝  wind speed: " + wind_speed,
+			"                 " + "󰖜  sunrise: " + sunrisestring,
+			"                 " + "󰖛  sunset: " + sunsetstring,
 		}
 	}
 
