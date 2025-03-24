@@ -1,6 +1,6 @@
 ## stormy
 
-minimal cli app for checking the weather, inspired by [rainy](https://github.com/liveslol/rainy).
+minimal cli tool for fetching weather, inspired by [rainy](https://github.com/liveslol/rainy).
 
 ### preview
 ![Screenshot From 2025-03-24 21-10-34](https://github.com/user-attachments/assets/4d6b8a2e-78a6-49d1-a0c8-4dae9af91bbc)
