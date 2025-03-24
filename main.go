@@ -145,6 +145,14 @@ func main() {
 			"        /_       " + "sunrise: " + sunrisestring,
 			"         /       " + "sunset: " + sunsetstring,
 		}
+	} else if weather_condition == "haze" {
+		output = []string{
+			"      ~ ~ ~ ~    " + "weather: hazy",
+			"     ~ ~ ~ ~ ~   " + "temperature: " + temp,
+			"      ~ ~ ~ ~    " + "wind speed: " + wind_speed,
+			"                 " + "sunrise: " + sunrisestring,
+			"                 " + "sunset: " + sunsetstring,
+		}
 	} else {
 		output = []string{
 			"       .--.      " + "weather: " + weather_condition,
