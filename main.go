@@ -110,11 +110,11 @@ func main() {
 
 	if weather_condition == "clear" {
 		output = []string{
-			"                 " + "󰖙  weather: clear",
-			"      " + yellow + ".-." + reset + "      " + "󰔏  temperature: " + temp,
-			"   " + yellow + "‒ (   ) ‒" + reset + "   " + "󰖝  wind speed: " + wind_speed,
-			"      " + yellow + "`-᾿" + reset + "      " + "󰖜  sunrise: " + sunrisestring,
-			"     " + yellow + "/   \\" + reset + "     " + "󰖛  sunset: " + sunsetstring,
+			"     \\   /     " + "󰖙  weather: clear",
+			"      .-.      " + "󰔏  temperature: " + temp,
+			"   ‒ (   ) ‒   " + "󰖝  wind speed: " + wind_speed,
+			"      `-᾿      " + "󰖜  sunrise: " + sunrisestring,
+			"     /   \\     " + "󰖛  sunset: " + sunsetstring,
 		}
 	} else if weather_condition == "clouds" {
 		output = []string{
